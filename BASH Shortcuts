@@ -1,0 +1,182 @@
+BASH Shortcuts
+pwd	print working directory	shows where you are
+ls	list directory	shows what’s in the directory
+ls *fastq	print anything that has the fastq ending	
+ls /bin	search within the bin folder w/o actually being in that folder	
+*	wildcard	sub anything into the spot
+wc	word count	
+wc -l	count the number of lines	wc -l filename.fastq
+cd ../	back up one directory	
+cd ../../	back up two directories	
+mkdir	create a directory	
+cp	copy a file	cp SRR098026.fastq SRR098026-backup.fastq
+mv	move a file	mv *backup.fastq backup/ = move backup file to backup folder
+cd $HOME	go home. 	
+Cd ~/	Go home. Absolute path. 	
+clear	clear the screen	
+cd (name of a directory)	move to a specific directory	
+man command	shows the operator’s manual for a command	
+q	quit	return to command line
+ls -lrth	additional information	
+head	prints 10 lines of the file to the screen	head filename.fastq
+tail	show last 10 lines of a file	tail filename.fastq
+tail -n3	show the last 3 lines	tail -n3 filename.fastq
+cat filename.fastq	prints the entire file to the screen	cat home/msm1094/gen711-811/shell_data/untrimmed_fastq
+*prints a file from another directory
+cd ~	back to the home directory	
+tab once	autocomplete	
+tab twice	give you all the options	
+rm	remove a file (can’t be reversed) 	
+rm -fR nameoffile	delete the folder and everything in it	
+git clone 	git clone httplinkofgithubsitepastehere	clone gihub
+up arrow	scroll through previous commands	
+history	prints history	
+less	Scroll through the file. Q to quit. 	less ~/shell_data/untrimmed_fastq/SRR097977.fastq
+Head	Shows first 10 line of a file	head -n 8 = first 8 lines
+Tail	Shows last 10 lines	
+conda activate	active an environment	
+unzip 	unzip a file	
+> filename.txt	save the results as a txt file	e.g. save a history (history > filename.txt)
+>> filename.txt	save the result to the end of an existing file	
+rm		
+echo *fastq	similar to ls, shows you all the things. 	
+!23423	re-runs the code from line 23423	
+less file.fastq	view and scroll through the contents of the file one screen at a time (lines wrap by default)	-s option: no line wrapping
+uniq	counts unique values	
+sort | uniq	sort and count unique values	
+>	File redirects a command’s output to a file	
+>>	File redirects a command’s output to a new file without overwriting the existing contents of the file 	history >> filename
+|	Pipe into a new command	
+Basename	Gets rid of repetitive parts of names	
+for	Used for iteration	
+		
+
+
+Ls Options
+../../	list the files 2 directories back
+ls.*	find the hidden files
+ls | grep ‘something’	finds everything in the folder with ‘something’
+ls -all	find all files, hidden and unhidden
+ls -laF	history
+ls *fastq	only display fastq files
+ls /usr/bin/	lists all the programs
+ls /usr/bin/@.sh	lists shell scripts
+ls /usr/bin/c* | wc -l	counts the words (items) in the list
+ls /bin/ | grep '^c' | wc -l	finds and counts all the words that start with c
+ls -lrth	long format of files sorted by date
+ls ../backup	Lists everything in the backup folder, which is one level up from where you are 
+Ls -l 	Gives you current permissions information, Rw- = permission o read and write
+ 	
+which 	See where commands/programs are installed	
+
+Grep
+Grep textsearchingfor filenamesearchingin	
+history | grep “word”	find the word in the history
+grep ‘thing’ filename.fastq	search for something within a file
+^	search for the beginning of a line, e.g. ^@ = search for @ at the beginning of a line
+-n 	adds the line numbers in a search command
+grep -v "pattern" file.txt	reverse grep (exclude search term rather than include them)
+ls | grep ‘something’	finds everything in the folder with ‘something’
+grep -B1 -A2 NNNNN SRR098026.fastq
+	Search above and below
+grep -c '^@' ~/shell_data/untrimmed_fastq/SRR097977.fastq	Count the number of lines that start with @
+grep -B1 'GNATNACCACTTCC' SRR098026.fastq | grep -v '^--'	Return all matching lines and the name (identified) for each sequence that contains a match
+grep -B1 'AAGTT' *.fastq | grep -v '^--'	Search for the sequence AAGTT in both FASTQ files. Have your search return all matching lines and the name (or identifier) for each sequence that contains a match.
+
+grep -B1 -A2 'NNNNNNNNNN' input.fastq > bad-reads.fastq	Create a file called badreads.fastq made up of reads with 10 Ns or more in a row
+unzip SRR098026.fastq.zip -d ~/fastq_files/	Unzips file to ~/fastq_files/
+
+Permissions	
+chmod ug+rwx SRR097977.fastq	Changes all backup files to be write protected
+-B1	Includes the line before
+-A2	Includes 2 lines after 
+grep -B1 -A2 'AAGTT' file.fastq	Return all AAGTT in the specified file with the entire read (4 lines, 1 line before and 2 lines after) 
+grep -n NNN SRR098026.fastq | wc -l
+	How many sequences in the file contain at least 3 consecutive Ns
+grep -n @ SRR098026.fastq | wc -l
+	How many sequences are in the file? 
+
+
+**exam question: relative path = go straight to a directory (e.g. cd shellpath) vs absolute path = typing in the whole path.
+cd $HOME/gen711-811
+
+*test question: list 4 ways to change directories
+Cd ~/
+FASTQ Files: 4 lines
+@ = header line, read ID
+Sequence line
++ Optional header line
+Quality line
+! " # $ % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ? @ A B C D E F G H I J
+0 (poorest) to 42 (highest)
+
+- `grep` is a powerful search tool with many options for customization.
+- `>`, `>>`, and `|` are different ways of redirecting output.
+- `command > file` redirects a command's output to a file.
+- `command >> file` redirects a command's output to a file without overwriting the existing contents of the file.
+- `command_1 | command_2` redirects the output of the first command as input to the second command.
+- `for` loops are used for iteration.
+- `basename` gets rid of repetitive parts of names.
+
+FASTQC Reports
+1.	Basic Statistics
+a.	Total reads
+b.	Is read length and GC% as expected
+2.	Per Base Sequence quality
+a.	Quality scores at each position across all reads
+b.	Y-axis = quality scores
+c.	X-axis = position in the read
+d.	Color = high/low/med quality
+
+
+Absolute Path:  cd /home/users/msm1094/prac_exam_2026
+Relative Path: mkdir -p prac_exam/data/untrimmed_fastq
+
+
+Gen711/811 Practical Exam 2026 (40 scaled points)
+NAME: Megan Munis
+Exam Instructions:
+•	Make sure to paste all the commands that you use below each of the tasks.
+•	Some tasks require you to copy your output here. All output that you paste is less than 10 lines.
+•	Do not spend too much time on a single prompt. It's important to get to all prompts.
+•	If you get stuck and do not know how to proceed: specifically ask for the answer.
+•	Help will get you to the next step, but you will lose points for that prompt.
+•	Questions on clarification of the question does not result in the loss of points.
+•	Replace MYNAME with your first and last name.
+•	Your exam must be pushed to your github before 5pm to get credit. You can push early, and push again at the end.
+Hints:
+•	Remember, if you want to re-run a command, but change it slightly to try to fix it, hit the up arrow and edit the last command that you ran.
+•	When typing out commands, filenames, or paths, hit the tab button a couple of times to see if it autocompletes for you.
+________________________________________
+1.	Use an absolute path to change your current working directory to the 'prac_exam' directory that you just cloned (2 points). cd /home/users/msm1094/prac_exam_2026
+2.	From 'prac_exam' directory, make the following directory structure in a single command: data/untrimmed_fastq (2 points, -1 point if you need to use 2 commands for this. Hint: There is a flag/option that lets you create nested directories all at once.) mkdir data | cd data | mkdir untrimmedfastq
+3.	Copy the two fastq files in the /tmp/Gen711-811_data directly into your untrimmed_fastq directory without changing your current directory. (2 points, partial credit if you need to change directories first. Multiple correct answers)
+cp /tmp/Gen711-811_data/.fastq /home/users/msm1094/prac_exam_2026/data/untrimmed_fastq/
+4.	List all the hidden files in this repo. Paste the command below (2 points) .: ..: untrimmed_fastq
+5.	Use a relative path to change your current working directory to the untrimmed_fastq directory. (2 points) cd untrimmed_fastq
+6.	These are paired-end FASTQ files from an E. coli long-term evolution experiment. To confirm the files look ok, view one of them and paste the top 4 lines below. (4 points, Hint: These files are gzip-compressed. Multiple correct answers)
+@SRR2584863.1 HWI-ST957:244:H73TDADXX:1:1101:4712:2181/2 GGCGACATTACTGACCCGCNNNNNNNNNNNNNNNNNNNCGACNNNNNNNNNNNNNNNNNCCTGATNNNNNNNNNNNNNNNTCAGNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN +
+7.	How large (file size) are the two uncompressed fastq files? Use a single command with appropriate options to show the file sizes in a human-readable format (e.g., MB). Paste the command and output below. (2 points)
+ls -lh prac_exam/data/untrimmed_fastq/
+For each fastq, how many quality score lines have the '@' symbol in them? To answer this, use one line of piped bash commands for each fastq, and the output should be a single number.(2 points)
+grep -c '^@' SRR2584863_2.fastq 2145318
+grep -c '^@' SRR2584866_2.fastq 3431525
+9.	How many reads have 15 or more uncalled bases (NNNNNNNNNNNNNNN) in SRR2584863_2.fastq? Count WITHOUT making a new file (4 points)
+[msm1094@ron untrimmed_fastq]$ grep -c 'NNNNNNNNNNNNNNN' SRR2584863_2.fastq 3015
+10.	Make a single fasta file from the two fastqs using the reads found in the question above, and their respective info lines. Name the new file 'badreads.fasta' in the 'untrimmed_fastq' directory. (4 points)
+grep -B1 -A2 'NNNNNNNNNNNNNNN' SRR2584863_2.fastq > bad-reads.fastq grep -B1 -A2 'NNNNNNNNNNNNNNN' SRR2584866_2.fastq >> bad-reads.fastq
+Hint: the first 4 lines of badreads.fasta should look similar (but maybe not exactly) to this:
+@SRR2584863.1 HWI-ST957:244:H73TDADXX:1:1101:4712:2181/2
+GGCGACATTACTGACCCGCNNNNNNNNNNNNNNNNNNNCGACNNNNNNNNNNNNNNNNNCCTGATNNNNNNNNNNNNNNNTCAGNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
+@SRR2584863.2 HWI-ST957:244:H73TDADXX:1:1101:8571:2191/2
+TCCCCGGAGTCAGCAGGGTGNNNNNNNNNNNNNNNNNATACATNNNNNNNNNNNNNNNGTTTTTGNNNNNNNNNNNNNNGCTGTCNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
+11.	Activate the conda 'genomics' environment that contains fastqc and confirm where fastqc is installed. Paste the command and its output below. (2 points)
+conda activate genomics which fastqc /home/share/anaconda/envs/genomics/bin/fastqc
+12.	Run fastqc on SRR2584863_1.fastq. Then, create a results/fastqc_untrimmed_reads directory and move both the .zip and .html output files into it — all without leaving your untrimmed_fastq directory. Paste all commands used. (4 points)
+fastqc SRR2584863_2.fastq mkdir -p ~/prac_exam_2026/results/fastqc_untrimmed_reads/ mv SRR2584863_2_fastqc.zip ~/results/fastqc_untrimmed_reads/ mv SRR2584863_2_fastqc.html ~/results/fastqc_untrimmed_reads/
+13.	Without changing directories, what is the 100th line of the file SRR2584863_1.trim.fastq in your trimmed_fastq directory? (2 points) head -n 100 SRR2584863_2.fastq (8(&.09>1>@:::>CAA>>B>><55:(:@8?B###########
+14.	Run md5sum on SRR2584863_1.fastq. Then run it again, redirecting the output to a new file called my_md5sums.txt. Next, run md5sum on SRR2584863_2.fastq and append it to my_md5sums.txt. Finally, append your name to the end of my_md5sums.txt. Paste all commands used. (4 points) md5sum SRR2584863_2.fastq md5sum SRR2584863_2.fastq > my_md5sums.txt md5sum SRR2584866_2.fastq >> my_md5sums.txt echo "Megan Munis" >> my_md5sums.txt
+15.	Push all of the new files that you created to your github repo using vscode's github side bar (4 points).
+
+
+mv -f old_dir new_dir: rename directory

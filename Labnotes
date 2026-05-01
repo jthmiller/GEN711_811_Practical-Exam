@@ -1,0 +1,122 @@
+## Lab 3 (2/6/26)
+pwd = print working directory, shows where you are. 
+ls = list directory
+cd ../ = back up one directory
+cd ../../ = back up further 
+$HOME
+clear = cleans the screen
+cd (name of directory) = move to a directory
+man ls = "manual list" gives you the operator's manual
+    alternative lookup = google your command options (e.g. biostar)
+q = quit, return to command line
+ls -lrth = additional information 
+head filename.fastq = prints 10 lines of the file to the screen
+cat filename.fastq = prints the entire file to the screen
+ls | grep 'something' = find everything in the folder with 'something'
+cd ~ = brings you back to your home directory
+**exam question: relative path = go straight to a directory (e.g. cd shellpath) vs absolute path = typing in the whole path. 
+tab once = autocomplete
+tab twice = gives you all the options
+rm = delete the thing. can't get it back. 
+rm -fR nameoffile = delete the folder and everything in it. 
+git clone httplinkofgithubsitepastehere = clone git hub
+up arrow = scroll through previous commands
+history = prints history
+grep 'thing' filename.fastq = search function to search for something within a file
+    ^@ = search for the @ symbol at the beginning of a line
+> filename.txt = saves the results as a txt file
+ls *fastq = print anything that has the fastq ending
+* = wildcard, sub anything into this spot. 
+ls /bin = can search within the bin folder w/o being actually in that folder. 
+wc = word count
+wc -l = count the number of lines
+ls /bin/ | grep '^c' | wc -l = find and count files that start with c
+
+
+##Lab 4 
+cd = goes to home directory
+*test question: list 4 ways to change directories
+
+ls ../../ = list the files in 2 directories back
+ls .* = find hidden files
+ls -all = finds all the files (hidden and unhidden)
+ls -laF = history? 
+ls *.fastq = only display .fastq files
+ls /usr/bin/ = lists all the programs. 
+ls /usr/bin/@.sh = lists shell scripts
+ls /usr/bin/c* | wc -l = counts the words (items) in the list. 
+echo *fastq = similar to ls, shows you all the things. 
+history = prints history
+!23423 = re-runs the code from line 23423
+history | grep "word" = finds the word in the history
+less file.fastq = wraps the file
+
+tail filename.fastq = show last 10 lines
+tail -n3 filename.fastq = show last 3 lines
+
+mkdir = create a directory
+cp = copy
+cp SRR098026.fastq SRR098026-backup.fastq
+mv *backup.fastq backup/ = move backup file to backup folder
+
+conda activate genomics 
+
+
+2/20/26
+conda active genomics = active genomics environment
+unzip *fastqc.zip
+
+2/27
+ls -lrth = long format of files sorted by date
+less  -S summary.txt = 
+which for programs = e.g. which cp = location on RON where the copy command is (tells you where programs are stored)
+history | grep = look through the history 
+history >  = redirection.... redirect to a location (e.g. history >myrecenthist.txt).. prints to a file instead of the screen
+rm filename = remove a file
+cp filename = copy a file 
+cp filename location = copy a file to destination 
+mv filenamne destination
+history >> filename = write the history to the end of of the existing file. 
+linecount = wc -jl filename
+ctrl C = quit/cancel
+N = low confidence, i.e. unknown basepair 
+
+grep textsearchingfor filenamesearchingin
+up arrow = scrolls through recent history
+grep -B1 -A2 NNNNN SRR098026.fastq
+grep -v -B1 -A2 NNNNNNNNN SRR09826.fastq = above and below search 
+grep -B1 -A2 NNNNNNNNNNN SRR098026.fastq | grep -v '^--' = ^ says it has to start with --
+man grep = shows file for now a command works
+-n = adds the line numbers in a search command
+grep -v = reverse grep (exclude something)
+
+for name in *fastq
+do
+echo ${name}
+done
+
+fore filename in *.fastq
+do
+head -n 2 ${filename}
+done
+
+for fq in *fastq 
+> do 
+> basename ${fq}
+>done
+
+for filename in *_2019.txt
+do
+name=$(baesname ${filename} _2019.txt)
+mv ${filename} ${name}_2019.txt
+done
+
+keypoints
+grep is a powerful search tool with many options for customization.
+>, >>, and | are different ways of redirecting output.
+command > file redirects a command's output to a file.
+command >> file redirects a command's output to a file without overwriting the existing contents of the file.
+command_1 | command_2 redirects the output of the first command as input to the second command.
+for loops are used for iteration.
+basename gets rid of repetitive parts of names.
+
