@@ -1,5 +1,5 @@
 ## Gen711/811 Practical Exam 2026 — Version B
-## NAME: MYNAME
+## NAME: Megan Munis
 
 Exam Instructions:
 - Make sure to paste all the commands that you use below each of the tasks.
