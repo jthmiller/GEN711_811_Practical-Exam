@@ -175,7 +175,7 @@ conda activate genomics which fastqc /home/share/anaconda/envs/genomics/bin/fast
 12.	Run fastqc on SRR2584863_1.fastq. Then, create a results/fastqc_untrimmed_reads directory and move both the .zip and .html output files into it — all without leaving your untrimmed_fastq directory. Paste all commands used. (4 points)
 fastqc SRR2584863_2.fastq mkdir -p ~/prac_exam_2026/results/fastqc_untrimmed_reads/ mv SRR2584863_2_fastqc.zip ~/results/fastqc_untrimmed_reads/ mv SRR2584863_2_fastqc.html ~/results/fastqc_untrimmed_reads/
 13.	Without changing directories, what is the 100th line of the file SRR2584863_1.trim.fastq in your trimmed_fastq directory? (2 points) head -n 100 SRR2584863_2.fastq (8(&.09>1>@:::>CAA>>B>><55:(:@8?B###########
-14.	Run md5sum on SRR2584863_1.fastq. Then run it again, redirecting the output to a new file called my_md5sums.txt. Next, run md5sum on SRR2584863_2.fastq and append it to my_md5sums.txt. Finally, append your name to the end of my_md5sums.txt. Paste all commands used. (4 points) md5sum SRR2584863_2.fastq md5sum SRR2584863_2.fastq > my_md5sums.txt md5sum SRR2584866_2.fastq >> my_md5sums.txt no idea...
+14.	Run md5sum on SRR2584863_1.fastq. Then run it again, redirecting the output to a new file called my_md5sums.txt. Next, run md5sum on SRR2584863_2.fastq and append it to my_md5sums.txt. Finally, append your name to the end of my_md5sums.txt. Paste all commands used. (4 points) md5sum SRR2584863_2.fastq md5sum SRR2584863_2.fastq > my_md5sums.txt md5sum SRR2584866_2.fastq >> my_md5sums.txt echo "Megan Munis" >> my_md5sums.txt
 15.	Push all of the new files that you created to your github repo using vscode's github side bar (4 points).
 
 
