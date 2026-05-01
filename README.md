@@ -1,6 +1,6 @@
 ## Setup Instructions (get help as needed): 
 1. Fork my 'GEN711_811_Practical-Exam' repo
-2. Open vscode. Go to 'file --> new window'. Close all other instances of vscode
+2. Open vscode. **IMPORTANT** Go to 'file --> new window'. Close all other instances of vscode
 3. Hit 'cmd + shift + p' to open the vs code command palette, and start typing 'Remote-SSH:Connect' until you see the 'Remote-SSH:Connect current window to host.'
 4. Select RON and enter username and password as needed. 
 5. In your home directory at RON, run```git clone https://github.com/YOURUSERNAME/GEN711_811_Practical-Exam.git``` with ```YOURUSERNAME``` replaced with your github username. 
