@@ -1,0 +1,35 @@
+Notes for Practical
+Control + shift + p opens command prompt
+cd stands for change directory
+To change straight to the home directory from a deeper one, use cd $HOME, cd ~, or cd ../ (repeat as many times as needed)
+pwd means print working directory
+ls means list and shows everything in the directory
+Control + C cancels what is currently being typed
+Clear clears the terminal
+ls has different options; ls -F shows files, ls -lrth shows a bunch of information about directories
+man means manual and typing a command after that explains it
+Tab autofills commands
+* is the wildcard
+ls -a shows hidden directories
+print out the bottom of something by using the command tail (file name)
+Can use file contents with less, cat, head, or tail
+Commands cp, mv, and mkdir are useful for manipulating existing files and creating new directories
+Use mkdir -p to create multiple files at once
+History command and then up arrows shows previous commands
+Doing ls -laF gives the (l) long format, (a) all of it, (F) and the format
+grep looks through a file and the first thing you put after grep is what you are searching for (might want to use quotes)
+less looks through files and lets you scroll through it rather than printing it across the whole screen
+used ls -lh to find the size of the file in human readable format
+chmod means change mode
+conda activate genomics activates genomics
+conda deactivate deactivates it
+using less -S keeps everything that is on one line on it
+> is a redirect, goes to the place you want
+>> is the append, it does the same thing but it doubles it
+doing -v does the inverse of grep and removes all the matches from the output
+doing ^ in front of a special character when doing a grep searches for it at the front
+man goes to the manual
+which will find were something is installed
+unzip unzips zip-compressed files; gunzip does the same for gzip-compressed files
+grep -c ‘example’ will search for the number of times the searched for term appears
+rm removes things
